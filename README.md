@@ -1,50 +1,75 @@
-# Welcome to your Expo app 👋
+# GitHub Random Repo Fetch
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native mobile application built with [Expo](https://expo.dev) that allows users to discover random repositories from any GitHub user's public profile.
 
-## Get started
+## 🚀 Overview
 
-1. Install dependencies
+This application provides a simple and intuitive interface for users to explore GitHub repositories. By entering a valid GitHub username, the app fetches the user's public repository list and randomly selects one to display. It's a fun tool for discovering new projects or just testing the GitHub API integration.
 
+## ✨ Features
+
+- **User Input:** customizable text field to enter any GitHub username.
+- **API Integration:** Seamlessly fetches data from the GitHub REST API.
+- **Randomizer:** Logic to randomly select one repository from the fetched list.
+- **Error Handling:** Gracefully handles invalid usernames, network errors, or users with no repositories.
+- **Cross-Platform:** Runs on Android, iOS, and Web (powered by Expo).
+
+## 📊 Application Flow
+
+The following diagram illustrates how the application processes user input and interacts with the GitHub API:
+
+```mermaid
+graph TD
+    A([User Opens App]) --> B[/Enter GitHub Username/]
+    B --> C[Click 'Fetch Random Repo']
+    C --> D{Fetch Data from GitHub API}
+    D -->|GET /users/:username/repos| E{API Response}
+    
+    E -->|Success| F{Repo List Empty?}
+    F -- No --> G[Select Random Repository]
+    G --> H[/Display Repository Name/]
+    F -- Yes --> I[/Display 'No repos found'/]
+    
+    E -->|Error| J[Log Error to Console]
+    J --> K[/Display 'Error fetching repos'/]
+```
+
+## 🛠️ Tech Stack
+
+- **Framework:** [React Native](https://reactnative.dev/)
+- **Platform:** [Expo](https://expo.dev/) (Managed Workflow)
+- **Routing:** [Expo Router](https://docs.expo.dev/router/introduction)
+- **Language:** TypeScript
+- **Styling:** React Native StyleSheet
+
+## 🏃‍♂️ Get Started
+
+### Prerequisites
+
+- Node.js installed on your machine.
+- A package manager like `npm` or `yarn`.
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd github_random_repo_fetch
+   ```
+
+2. **Install dependencies:**
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. **Start the app:**
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+### Running the App
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+After running the start command, you can view the app on:
+- **Mobile:** Scan the QR code with the Expo Go app (Android) or Camera app (iOS).
+- **Web:** Press `w` in the terminal to open in the browser.
+- **Emulators:** Press `a` for Android or `i` for iOS (requires setup).
